@@ -1,3 +1,4 @@
+import WeatherIcon from './components/WeatherIcon'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { getForecast, searchCities } from './api'
 import CurrentWeather from './components/CurrentWeather'
@@ -95,7 +96,7 @@ export default function App() {
     <div className="app">
       <header className="topbar container">
         <h1 className="brand">
-          <span aria-hidden="true">⛅</span> SkyCast
+          <span aria-hidden="true"><WeatherIcon kind="partly" size={22} /></span> SkyCast
         </h1>
         <button className="unit-toggle" onClick={toggleUnit} title="Switch units">
           °{unit === 'celsius' ? 'C' : 'F'}

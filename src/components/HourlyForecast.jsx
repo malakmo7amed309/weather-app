@@ -1,3 +1,4 @@
+import WeatherIcon from './WeatherIcon'
 import { describeWeather } from '../api'
 
 export default function HourlyForecast({ hourly, timezone, unit }) {
@@ -18,7 +19,7 @@ export default function HourlyForecast({ hourly, timezone, unit }) {
           return (
             <div className="hour-cell" key={t}>
               <span className="hour-time">{String(hour).padStart(2, '0')}:00</span>
-              <span className="hour-icon" aria-hidden="true">{icon}</span>
+              <span className="hour-icon" aria-hidden="true"><WeatherIcon kind={icon} /></span>
               <span className="hour-temp">{Math.round(hourly.temperature_2m[idx])}{symbol}</span>
             </div>
           )

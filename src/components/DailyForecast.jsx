@@ -1,3 +1,4 @@
+import WeatherIcon from './WeatherIcon'
 import { describeWeather } from '../api'
 
 export default function DailyForecast({ daily, unit }) {
@@ -12,7 +13,7 @@ export default function DailyForecast({ daily, unit }) {
           return (
             <li className="daily-row" key={day}>
               <span className="daily-day">{weekday}</span>
-              <span className="daily-icon" title={label} aria-hidden="true">{icon}</span>
+              <span className="daily-icon" title={label} aria-hidden="true"><WeatherIcon kind={icon} /></span>
               <span className="daily-rain">Rain {daily.precipitation_probability_max?.[i] ?? 0}%</span>
               <span className="daily-min">{Math.round(daily.temperature_2m_min[i])}°</span>
               <span className="daily-max">{Math.round(daily.temperature_2m_max[i])}°</span>

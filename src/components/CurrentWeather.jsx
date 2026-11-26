@@ -1,3 +1,4 @@
+import WeatherIcon from './WeatherIcon'
 import { describeWeather, windDirection } from '../api'
 
 export default function CurrentWeather({ place, current, daily, unit }) {
@@ -18,7 +19,7 @@ export default function CurrentWeather({ place, current, daily, unit }) {
           </h2>
           <p className="today">{today}</p>
           <p className="condition">
-            <span className="condition-icon" aria-hidden="true">{icon}</span> {label}
+            <span className="condition-icon" aria-hidden="true"><WeatherIcon kind={icon} /></span> {label}
           </p>
         </div>
         <div className="temp-block">
@@ -28,7 +29,7 @@ export default function CurrentWeather({ place, current, daily, unit }) {
           </p>
           <p className="feels">Feels like {Math.round(current.apparent_temperature)}{symbol}</p>
           <p className="hi-lo">
-            ↑ {Math.round(daily.temperature_2m_max[0])}° &nbsp; ↓ {Math.round(daily.temperature_2m_min[0])}°
+            <svg className="arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20V5M6 11l6-6 6 6" /></svg> {Math.round(daily.temperature_2m_max[0])}° &nbsp; <svg className="arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v15M6 13l6 6 6-6" /></svg> {Math.round(daily.temperature_2m_min[0])}°
           </p>
         </div>
       </div>

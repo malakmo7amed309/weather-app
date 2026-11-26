@@ -31,39 +31,39 @@ export async function getForecast({ latitude, longitude, unit = 'celsius' }) {
   return data
 }
 
-// WMO weather codes -> label + emoji
+// WMO weather codes -> label + icon kind (see components/WeatherIcon.jsx)
 const WMO = {
-  0: ['Clear sky', '☀️'],
-  1: ['Mainly clear', '🌤️'],
-  2: ['Partly cloudy', '⛅'],
-  3: ['Overcast', '☁️'],
-  45: ['Fog', '🌫️'],
-  48: ['Icy fog', '🌫️'],
-  51: ['Light drizzle', '🌦️'],
-  53: ['Drizzle', '🌦️'],
-  55: ['Heavy drizzle', '🌧️'],
-  61: ['Light rain', '🌦️'],
-  63: ['Rain', '🌧️'],
-  65: ['Heavy rain', '🌧️'],
-  66: ['Freezing rain', '🌧️'],
-  67: ['Freezing rain', '🌧️'],
-  71: ['Light snow', '🌨️'],
-  73: ['Snow', '🌨️'],
-  75: ['Heavy snow', '❄️'],
-  77: ['Snow grains', '🌨️'],
-  80: ['Light showers', '🌦️'],
-  81: ['Showers', '🌧️'],
-  82: ['Heavy showers', '🌧️'],
-  85: ['Snow showers', '🌨️'],
-  86: ['Snow showers', '🌨️'],
-  95: ['Thunderstorm', '⛈️'],
-  96: ['Storm with hail', '⛈️'],
-  99: ['Storm with hail', '⛈️'],
+  0: ['Clear sky', 'sun'],
+  1: ['Mainly clear', 'mostly'],
+  2: ['Partly cloudy', 'partly'],
+  3: ['Overcast', 'cloud'],
+  45: ['Fog', 'fog'],
+  48: ['Icy fog', 'fog'],
+  51: ['Light drizzle', 'showers'],
+  53: ['Drizzle', 'showers'],
+  55: ['Heavy drizzle', 'rain'],
+  61: ['Light rain', 'showers'],
+  63: ['Rain', 'rain'],
+  65: ['Heavy rain', 'rain'],
+  66: ['Freezing rain', 'rain'],
+  67: ['Freezing rain', 'rain'],
+  71: ['Light snow', 'snow'],
+  73: ['Snow', 'snow'],
+  75: ['Heavy snow', 'snow'],
+  77: ['Snow grains', 'snow'],
+  80: ['Light showers', 'showers'],
+  81: ['Showers', 'rain'],
+  82: ['Heavy showers', 'rain'],
+  85: ['Snow showers', 'snow'],
+  86: ['Snow showers', 'snow'],
+  95: ['Thunderstorm', 'storm'],
+  96: ['Storm with hail', 'storm'],
+  99: ['Storm with hail', 'storm'],
 }
 
 export function describeWeather(code, isDay = 1) {
-  const [label, icon] = WMO[code] || ['Unknown', '🌡️']
-  if (!isDay && (code === 0 || code === 1)) return [label, '🌙']
+  const [label, icon] = WMO[code] || ['Unknown', 'cloud']
+  if (!isDay && (code === 0 || code === 1)) return [label, 'moon']
   return [label, icon]
 }
 
